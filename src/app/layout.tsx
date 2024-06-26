@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Container from '@mui/material/Container'
+import MenuDesktop from "./components/MenuDesktop";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}
+        style={{
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          overflowY: "hidden",
+        }}
+      >
+        <Container maxWidth="lg" sx={{ mt: "2em" }}>
+          <MenuDesktop />
+          {children}
+        </Container>
+      </body>
     </html>
   );
 }
